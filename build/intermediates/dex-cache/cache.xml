@@ -52,7 +52,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="99e0055fc701c7a0c55185d897376f2e1441e490">
+        sha1="295338be08b2dc2dafba053857ed7df03eb8b3e9">
         <dex dex="D:\github\StockHawk\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_97baa89953e41bebcb89bccf7460355e876a26e6\classes.dex" />
     </item>
     <item
@@ -142,7 +142,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="287d7c21fb4c3f46a706dbeb809901bd2504c921">
+        sha1="977f166d2bfff5cb9b69935d666abdc0042a0460">
         <dex dex="D:\github\StockHawk\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_f92ee107a9c66feb8b6894fe86531cd8d9108f8b\classes.dex" />
     </item>
     <item

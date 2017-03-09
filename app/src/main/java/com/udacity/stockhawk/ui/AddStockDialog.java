@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -15,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -60,7 +63,11 @@ public class AddStockDialog extends DialogFragment {
 
         final Dialog dialog = builder.create();
 
-        EditText stockEditText = (EditText) custom.findViewById(R.id.dialog_stock);
+        final AutoCompleteTextView stockEditText = (AutoCompleteTextView) custom.findViewById(R.id.dialog_stock);
+        stockEditText.setThreshold(1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.support_simple_spinner_dropdown_item);
+        stockEditText.setAdapter(adapter);
+
         stockEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -69,7 +76,7 @@ public class AddStockDialog extends DialogFragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                AsyncTask autoCompleteTask= new AutoCompleteTask(stockEditText, getActivity()).execute(s.toString());
             }
 
             @Override
@@ -97,7 +104,12 @@ public class AddStockDialog extends DialogFragment {
     private void addStock() {
         Activity parent = getActivity();
         if (parent instanceof MainActivity) {
-            ((MainActivity) parent).addStock(stock.getText().toString().toUpperCase());
+            String selectedText = stock.getText().toString().toUpperCase();
+            int symbolStart = selectedText.indexOf('(');
+            int symbolEnd = selectedText.indexOf(')');
+            if(symbolStart != -1 && symbolEnd != -1)
+                selectedText = selectedText.substring(symbolStart+1, symbolEnd);
+            ((MainActivity) parent).addStock(selectedText);
         }
         dismissAllowingStateLoss();
     }
