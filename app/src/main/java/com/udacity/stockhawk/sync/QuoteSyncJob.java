@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.data.PrefUtils;
 
@@ -73,18 +74,21 @@ public final class QuoteSyncJob {
 
                 Stock stock = quotes.get(symbol);
                 String name = stock.getName();
-                if(name != null) {
+                StringBuilder historyBuilder = new StringBuilder();
+                float price = 0;
+                float change = 0;
+                float percentChange = 0;
+                if(stock.getQuote().getPrice() != null) {
                     StockQuote quote = stock.getQuote();
 
-                    float price = quote.getPrice().floatValue();
-                    float change = quote.getChange().floatValue();
-                    float percentChange = quote.getChangeInPercent().floatValue();
+                    price = quote.getPrice().floatValue();
+                    change = quote.getChange().floatValue();
+                    percentChange = quote.getChangeInPercent().floatValue();
 
                     // WARNING! Don't request historical data for a stock that doesn't exist!
                     // The request will hang forever X_x
                     List<HistoricalQuote> history = stock.getHistory(from, to, Interval.WEEKLY);
 
-                    StringBuilder historyBuilder = new StringBuilder();
 
                     for (HistoricalQuote it : history) {
                         historyBuilder.append(it.getDate().getTimeInMillis());
@@ -92,6 +96,10 @@ public final class QuoteSyncJob {
                         historyBuilder.append(it.getClose());
                         historyBuilder.append("\n");
                     }
+                }
+                else{
+                    name = context.getResources().getString(R.string.no_data);
+                }
 
                     ContentValues quoteCV = new ContentValues();
                     quoteCV.put(Contract.Quote.COLUMN_SYMBOL, symbol);
@@ -105,7 +113,7 @@ public final class QuoteSyncJob {
 
                     quoteCVs.add(quoteCV);
                 }
-            }
+
 
             context.getContentResolver()
                     .bulkInsert(

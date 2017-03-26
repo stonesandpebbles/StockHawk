@@ -39,7 +39,7 @@
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <activity
-            android:name=".ui.GraphActivity"
+            android:name=".ui.DetailActivity"
             android:label="@string/title_activity_graph"
             android:parentActivityName=".ui.MainActivity">
             <meta-data
