@@ -118,9 +118,12 @@ public class StockDetail implements Parcelable {
     public List<Entry> getDataEntries(){
         if(dataEntryList.isEmpty()){
             String[] dataEntry = historyStr.split(NEWLINE);
-            for(int i =  0; i < dataEntry.length; i++){
+            for(int i =  dataEntry.length - 1; i > 0 ; i--){
                 String [] entryXAndY = dataEntry[i].split(COMMA);
+                //dataEntryList.add(new Entry(Float.valueOf(entryXAndY[0])/10000000000f, Float.valueOf(entryXAndY[1])));
+                //double xVal = Double.valueOf(entryXAndY[0]);
                 dataEntryList.add(new Entry(Float.valueOf(entryXAndY[0]), Float.valueOf(entryXAndY[1])));
+                //dataEntryList.add(new Entry(3000000200000000f, 260));
             }
         }
 

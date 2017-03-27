@@ -36,8 +36,8 @@ class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockViewHolder> {
     private final StockAdapterOnClickHandler clickHandler;
     private Map<String, StockDetail> mStockDetailMap;
 
-    private static final String OPEN_BRACE = "(";
-    private static final String CLOSE_BRACE = ")";
+    public static final String OPEN_BRACE = "(";
+    public static final String CLOSE_BRACE = ")";
 
     public StockDetail getStockDetail(String symbol) {
         return mStockDetailMap.get(symbol);

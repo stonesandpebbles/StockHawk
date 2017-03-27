@@ -4,10 +4,20 @@
     android:layout_height="match_parent"
     android:id="@+id/fragment_graph"
     tools:context="com.udacity.stockhawk.ui.GraphFragment">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/stock_name"
+        style="@style/StockSymbolTextStyle"
+        android:padding="@dimen/activity_horizontal_margin"/>
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/historical_chart"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+</LinearLayout>
 
 </FrameLayout>

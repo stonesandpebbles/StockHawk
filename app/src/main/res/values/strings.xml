@@ -32,7 +32,7 @@
     <string name="toast_stock_added_no_connectivity">Symbol <xliff:g id="symbol_to_add">%s</xliff:g> added. Will refresh when network available.</string>
     <string name="toast_stock_already_added">Symbol <xliff:g id="symbol_added">%s</xliff:g> already added.</string>
     <string name="toast_no_connectivity">Will refresh when network available.</string>
-    <string name="title_activity_graph">Graph Activity</string>
+    <string name="title_activity_graph">Stock Price History</string>
 
 
 
@@ -45,7 +45,7 @@
     <string name="a11y_stock_list">Added Stock List</string>
     <string name="a11y_add_stock">Add Stock</string>
     <string name="plus_symbol">+</string>
-    <string name="error_unknown_url">Unknown URI:</string>
+    <string name="error_unknown_url" translatable="false">Unknown URI:</string>
     <string name="a11y_display_option_currency">Price Change Display Option. Currently:<xliff:g id="currency">$</xliff:g></string>
     <string name="a11y_display_option_percentage">Price Change Display Option. Currently:<xliff:g id="percentage">%</xliff:g></string>
 
