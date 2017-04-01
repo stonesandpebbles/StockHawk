@@ -4,6 +4,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:toolbarStyle">@style/ToolbarText</item>
+    </style>
+
+    <style name="ToolbarText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorGraphAxis</item>
     </style>
 
     <style name="PercentChangeTextStyle">

@@ -77,6 +77,7 @@ public class GraphFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_graph, container, false);
         TextView stockName = (TextView) rootView.findViewById(R.id.stock_name);
         stockName.setText(mStockDetail.getName() + StockAdapter.OPEN_BRACE + mStockDetail.getSymbol() + StockAdapter.CLOSE_BRACE);
+        stockName.setContentDescription(mStockDetail.getName() + StockAdapter.OPEN_BRACE + mStockDetail.getSymbol() + StockAdapter.CLOSE_BRACE);
         mChart = (LineChart) rootView.findViewById(R.id.historical_chart);
         // no description text
         mChart.getDescription().setEnabled(false);
@@ -141,6 +142,8 @@ public class GraphFragment extends Fragment {
         mChart.setData(lineData);
         mChart.notifyDataSetChanged();
         mChart.invalidate(); // refresh
+        mChart.setContentDescription(getString(R.string.a11y_history_graph,
+                Float.toString(mChart.getYMin()), Float.toString(mChart.getYMax())));
         return rootView;
     }
 

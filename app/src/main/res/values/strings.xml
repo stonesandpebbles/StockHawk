@@ -28,6 +28,7 @@
 
     <string name="error_no_network">No network connectivity! Will load stock cursor when the network is available.</string>
     <string name="error_no_stocks">No stocks added! Hit the floating action button to add one.</string>
+    <string name="error_no_stocks_widget">No stocks added!</string>
 
     <string name="toast_stock_added_no_connectivity">Symbol <xliff:g id="symbol_to_add">%s</xliff:g> added. Will refresh when network available.</string>
     <string name="toast_stock_already_added">Symbol <xliff:g id="symbol_added">%s</xliff:g> already added.</string>
@@ -44,9 +45,12 @@
     <string name="a11y_name_symbol">Stock Name and Symbol<xliff:g id="stock_name">%s</xliff:g></string>
     <string name="a11y_stock_list">Added Stock List</string>
     <string name="a11y_add_stock">Add Stock</string>
+    <string name="a11y_stock_icon">Stock Hawk Icon</string>
+    <string name="a11y_history_graph">Price History Graph. Min Price <xliff:g>$%s</xliff:g>, Max Price <xliff:g>$%s</xliff:g></string>
     <string name="plus_symbol">+</string>
     <string name="error_unknown_url" translatable="false">Unknown URI:</string>
     <string name="a11y_display_option_currency">Price Change Display Option. Currently:<xliff:g id="currency">$</xliff:g></string>
     <string name="a11y_display_option_percentage">Price Change Display Option. Currently:<xliff:g id="percentage">%</xliff:g></string>
+    <string name="title_widget">Stock List</string>
 
 </resources>
