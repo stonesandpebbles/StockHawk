@@ -89,11 +89,15 @@ public class StockWidgetRemoteViewsService extends RemoteViewsService {
                     views.setTextViewText(R.id.price, dollarFormat.format(price));
                     setRemoteContentDescription(views, getString(R.string.a11y_price, dollarFormat.format(price)));
 
-                    final Intent fillInIntent = new Intent();
 
-                    fillInIntent.putExtra(GraphFragment.STOCK_DETAIL, stockDetail);
-                    views.setOnClickFillInIntent(R.id.widget_list_item, fillInIntent);
                 }
+                else{
+                    views.setTextViewText(R.id.price, "");
+                }
+                final Intent fillInIntent = new Intent();
+
+                fillInIntent.putExtra(GraphFragment.STOCK_DETAIL, stockDetail);
+                views.setOnClickFillInIntent(R.id.widget_list_item, fillInIntent);
                 return views;
             }
 

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @BindView(R.id.error)
     TextView error;
     private StockAdapter adapter;
+    private boolean mTwoPane;
+    private static final String DETAILFRAGMENT_TAG = "DFTAG";
+    private boolean firstLoad = true;
 
     @Override
     public void onClick(String symbol) {
@@ -56,10 +60,22 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         //Create intent
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(GraphFragment.STOCK_DETAIL, adapter.getStockDetail(symbol));
-        if(adapter.getStockDetail(symbol).getPrice() != 0.0) {
-            //Start detail activity
-            startActivity(intent);
-        }
+        //if(adapter.getStockDetail(symbol).getPrice() != 0.0) {
+            if(mTwoPane){
+                // In two-pane mode, show the detail view in this activity by
+                // adding or replacing the detail fragment using a
+                // fragment transaction.
+
+                GraphFragment fragment = GraphFragment.newInstance(adapter.getStockDetail(symbol));
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.stock_detail_container, fragment, DETAILFRAGMENT_TAG)
+                        .commit();
+            }
+            else {
+                //Start detail activity
+                startActivity(intent);
+            }
+       // }
     }
 
     @Override
@@ -68,6 +84,27 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        if (findViewById(R.id.stock_detail_container) != null) {
+            // The detail container view will be present only in the large-screen layouts
+            // (res/layout-sw600dp). If this view is present, then the activity should be
+            // in two-pane mode.
+            mTwoPane = true;
+            // In two-pane mode, show the detail view in this activity by
+            // adding or replacing the detail fragment using a
+            // fragment transaction.
+            if (savedInstanceState == null) {
+                StockDetail stockDetail = getIntent() != null ? (StockDetail) getIntent().getParcelableExtra(GraphFragment.STOCK_DETAIL) : null;
+                if(stockDetail != null)
+                    firstLoad = false;
+                GraphFragment fragment = GraphFragment.newInstance(stockDetail);
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.stock_detail_container, fragment, DETAILFRAGMENT_TAG)
+                        .commit();
+            }
+        }
+        else
+            mTwoPane = false;
 
         adapter = new StockAdapter(this, this);
         stockRecyclerView.setAdapter(adapter);
@@ -172,6 +209,18 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             error.setVisibility(View.GONE);
         }
         adapter.setCursor(data);
+        if(mTwoPane && firstLoad) {
+            stockRecyclerView.postDelayed(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    if(stockRecyclerView.findViewHolderForAdapterPosition(0) != null )
+                        stockRecyclerView.findViewHolderForAdapterPosition(0).itemView.performClick();
+                }
+            },50);
+            firstLoad = false;
+        }
     }
 
 

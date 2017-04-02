@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.StockDetail;
 
-public class DetailActivity extends AppCompatActivity implements GraphFragment.OnFragmentInteractionListener{
+public class DetailActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +29,4 @@ public class DetailActivity extends AppCompatActivity implements GraphFragment.O
         }
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 }

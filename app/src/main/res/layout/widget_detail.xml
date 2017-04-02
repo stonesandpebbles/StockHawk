@@ -24,7 +24,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
-            android:padding="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/widget_heading_top_margin"
             android:gravity="center_vertical"
             android:textAppearance="@style/ToolbarText"
             android:layout_weight="1"/>
