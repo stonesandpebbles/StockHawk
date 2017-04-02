@@ -23,8 +23,11 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.StockDetail;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -40,6 +43,7 @@ public class GraphFragment extends Fragment {
 
 
     private LineChart mChart;
+
 
     public GraphFragment() {
         // Required empty public constructor
@@ -127,7 +131,14 @@ public class GraphFragment extends Fragment {
             leftAxis.setTextColor(Color.WHITE);
             leftAxis.setDrawGridLines(false);
             leftAxis.setGranularityEnabled(true);
-
+            leftAxis.setDrawLabels(true);
+            final DecimalFormat dollarFormat = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.US);
+            leftAxis.setValueFormatter(new IAxisValueFormatter() {
+                @Override
+                public String getFormattedValue(float value, AxisBase axis) {
+                    return dollarFormat.format(value);
+                }
+            });
             YAxis rightAxis = mChart.getAxisRight();
             rightAxis.setEnabled(false);
 

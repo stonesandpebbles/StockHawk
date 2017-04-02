@@ -71,16 +71,15 @@ public final class QuoteSyncJob {
             while (iterator.hasNext()) {
                 String symbol = iterator.next();
 
-
                 Stock stock = quotes.get(symbol);
-                String name = stock.getName();
+                String name = context.getResources().getString(R.string.no_data);
                 StringBuilder historyBuilder = new StringBuilder();
                 float price = 0;
                 float change = 0;
                 float percentChange = 0;
-                if(stock.getQuote().getPrice() != null) {
+                if(stock != null && stock.getQuote() != null && stock.getQuote().getPrice() != null) {
                     StockQuote quote = stock.getQuote();
-
+                    name = stock.getName();
                     price = quote.getPrice().floatValue();
                     change = quote.getChange().floatValue();
                     percentChange = quote.getChangeInPercent().floatValue();
@@ -96,9 +95,6 @@ public final class QuoteSyncJob {
                         historyBuilder.append(it.getClose());
                         historyBuilder.append("\n");
                     }
-                }
-                else{
-                    name = context.getResources().getString(R.string.no_data);
                 }
 
                     ContentValues quoteCV = new ContentValues();

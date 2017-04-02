@@ -1,5 +1,5 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">Stock Hawk</string>
+    <string name="app_name" translatable="false">Stock Hawk</string>
 
     <string name="pref_stocks_initialized_key" translatable="false">initialized</string>
 
@@ -45,7 +45,7 @@
     <string name="a11y_name_symbol">Stock Name and Symbol<xliff:g id="stock_name">%s</xliff:g></string>
     <string name="a11y_stock_list">Added Stock List</string>
     <string name="a11y_add_stock">Add Stock</string>
-    <string name="a11y_stock_icon">Stock Hawk Icon</string>
+    <string name="a11y_stock_icon"><xliff:g>Stock Hawk</xliff:g> Icon</string>
     <string name="a11y_history_graph">Price History Graph. Min Price <xliff:g>$%s</xliff:g>, Max Price <xliff:g>$%s</xliff:g></string>
     <string name="plus_symbol">+</string>
     <string name="error_unknown_url" translatable="false">Unknown URI:</string>
