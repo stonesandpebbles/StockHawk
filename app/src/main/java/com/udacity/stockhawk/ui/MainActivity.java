@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private StockAdapter adapter;
     private boolean mTwoPane;
     private static final String DETAILFRAGMENT_TAG = "DFTAG";
-    private boolean firstLoad = true;
+    private boolean firstLoad = false;
 
     @Override
     public void onClick(String symbol) {
@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             // adding or replacing the detail fragment using a
             // fragment transaction.
             if (savedInstanceState == null) {
+                firstLoad = true;
                 StockDetail stockDetail = getIntent() != null ? (StockDetail) getIntent().getParcelableExtra(GraphFragment.STOCK_DETAIL) : null;
                 if(stockDetail != null)
                     firstLoad = false;

@@ -4,8 +4,13 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:actionBarStyle">@style/ToolbarText</item>
+        <item name="android:actionBarStyle">@style/ActionBarStyle</item>
     </style>
+
+    <style name="ActionBarStyle" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="android:titleTextStyle">@style/ToolbarText</item>
+    </style>
+
 
   <!--  <style name="Theme.AppCompat" parent="android:style/Theme">
         <item name="android:actionBarStyle">@style/Theme.YourTheme.Styled.ActionBar</item>
@@ -20,7 +25,6 @@
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/colorGraphAxis</item>
     </style>-->
-
     <style name="ToolbarText" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/colorGraphAxis</item>

@@ -12,4 +12,6 @@
     <dimen name="widget_heading_top_margin">16dp</dimen>
 
     <dimen name="graph_error_text_size">20sp</dimen>
+
+    <dimen name="text_size_title_material_toolbar">20sp</dimen>
 </resources>
